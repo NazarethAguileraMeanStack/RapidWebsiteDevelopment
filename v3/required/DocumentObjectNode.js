@@ -5,6 +5,14 @@ class DocumentObjectNode {
         
     }
 
+    loadCSS() {
+        console.error("Memory Leak. Component initialized without overriding .loadCSS Method");
+    }
+
+    loadScript() {
+        console.error("Memory Leak. Component initialized without overriding .loadScript Method");
+    }
+
     importCSS(subfolder) {
         const head = document.getElementsByTagName("HEAD")[0];
         const link = document.createElement("LINK");
@@ -14,10 +22,10 @@ class DocumentObjectNode {
     }
 
     importScript(subfolder) {
-        const head = document.getElementsByTagName("BODY")[0];
+        const body = document.getElementsByTagName("BODY")[0];
         const script = document.createElement("SCRIPT");
         script.src = "../components/" + `${subfolder}`;
-        head.appendChild(script);
+        body.appendChild(script);
     }
 
     createNode() {

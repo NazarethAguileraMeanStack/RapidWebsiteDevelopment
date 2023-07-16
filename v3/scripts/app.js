@@ -15,17 +15,24 @@
     const textblockWithTitle = new TextBlockWithTitle("Hello World", "This is my confession");
     const slideshow = new Slideshow("../resources/image1.jpg", "presentation");
     const banner2 = new Banner("Footer!");
+    const orderedList = new OrderedList(["Dogs", "Cats", "Birds"]);
     const navbar2 = new Navbar(["Top", "Right", "Left", "Bottom"]);
+    const textblockAlpha = new TextBlock("I am the left side");
+    const textblockBeta = new TextBlock("I am the right side");
+    const columns2 = new Columns2(textblockAlpha, textblock2);
+    const unorderedList = new UnorderedList(["wolf", "bear", "fox"]);
 
     const components = [
         banner,
         navbar,
         textblock,
-        textblock2,
         textblockWithTitle,
         slideshow,
+        orderedList,
         banner2,
-        navbar2
+        navbar2,
+        columns2,
+        unorderedList
     ];
 
     // attach components
