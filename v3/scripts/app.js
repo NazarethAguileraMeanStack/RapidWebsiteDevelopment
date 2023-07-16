@@ -13,13 +13,17 @@
     const textblock2 = new TextBlock("Truth, Justice, and the American Way", "superman");
     const banner = new Banner("Welcome To My Website!");
     const textblockWithTitle = new TextBlockWithTitle("Hello World", "This is my confession");
+    const banner2 = new Banner("Footer!");
+    const navbar2 = new Navbar(["Top", "Right", "Left", "Bottom"]);
 
     const components = [
         banner,
         navbar,
         textblock,
         textblock2,
-        textblockWithTitle
+        textblockWithTitle,
+        banner2,
+        navbar2
     ];
 
     // attach components
