@@ -14,7 +14,7 @@ class DocumentObjectNode {
     }
 
     importScript(subfolder) {
-        const head = document.getElementsByTagName("HEAD")[0];
+        const head = document.getElementsByTagName("BODY")[0];
         const script = document.createElement("SCRIPT");
         script.src = "../components/" + `${subfolder}`;
         head.appendChild(script);

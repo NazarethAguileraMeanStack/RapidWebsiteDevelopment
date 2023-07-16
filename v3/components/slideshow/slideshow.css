@@ -1,3 +1,10 @@
 .slideshow-container {
     border: 5px solid yellow;
+    width: 200px;
+    height: 200px;
+}
+
+.slideshow-container img {
+    height: 100%;
+    width: 100%;
 }

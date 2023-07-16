@@ -1,43 +1,38 @@
 class Slideshow extends DocumentObjectNode {
-    constructor(images, id = null) {
+    constructor(defaultImage, id = null) {
         super();
-        this.images = images;
-        this.index = 0;
-        this.timer = 5000;
-        this.importCSS("slideshow/slideshow.css");
+        this.defaultImage = defaultImage;
+        this.loadCSS("slideshow/slideshow.css");
+        this.loadScript("slideshow/slideshow.js");
         return {node: this.createNode(id) };
+    }
+
+    static includeCSS = true;
+    static includeScript = true;
+
+    loadCSS(directory) {
+        if (this.constructor.includeCSS) this.importCSS(directory);
+        this.constructor.includeCSS = false;
+    }
+
+    loadScript(directory) {
+        if (this.constructor.includeScript) this.importScript(directory);
+        this.constructor.includeScript = false;
     }
 
     createNode(id) {
         const div = document.createElement("DIV");
         const img = document.createElement("IMG");
         img.id = "slideshow-image";
-        img.src = this.images[1];
+        img.src = this.defaultImage;
         div.appendChild(img);
         div.classList.add("slideshow-container");
         
-        if (id) {
-            div.id = id;
-        }
-        setInterval(changeImage, this.timer);
-
+        if (id) div.id = id;
         return div;
-
-
-
-
-
-
-        function changeImage() {
-            let image = document.getElementById("slideshow-image");
-            //image.src = this.images[this.index];
-            if (this.index < this.images.length - 1) {
-                this.index++;
-            } else {
-                this.index = 0;
-            }
-        }
     }
+
+    
 }
 
 /// needs complete rework

@@ -13,6 +13,7 @@
     const textblock2 = new TextBlock("Truth, Justice, and the American Way", "superman");
     const banner = new Banner("Welcome To My Website!");
     const textblockWithTitle = new TextBlockWithTitle("Hello World", "This is my confession");
+    const slideshow = new Slideshow("../resources/image1.jpg", "presentation");
     const banner2 = new Banner("Footer!");
     const navbar2 = new Navbar(["Top", "Right", "Left", "Bottom"]);
 
@@ -22,6 +23,7 @@
         textblock,
         textblock2,
         textblockWithTitle,
+        slideshow,
         banner2,
         navbar2
     ];
