@@ -21,6 +21,7 @@
     const textblockBeta = new TextBlock("I am the right side");
     const columns2 = new Columns2(textblockAlpha, textblock2);
     const unorderedList = new UnorderedList(["wolf", "bear", "fox"]);
+    const bannerWithImage = new BannerWithImage("About Me!", "../resources/image2.jpg"); 
 
     const components = [
         banner,
@@ -32,7 +33,8 @@
         banner2,
         navbar2,
         columns2,
-        unorderedList
+        unorderedList,
+        bannerWithImage
     ];
 
     // attach components
