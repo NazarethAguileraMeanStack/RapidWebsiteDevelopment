@@ -2,42 +2,22 @@
 
 (function() {
 
-    // root node
+    // root element
     const root = document.getElementById("root");
 
 
 
-    // include components
-    const navbar = new Navbar(["Home", "About Me", "Contact"]);
-    const textblock = new TextBlock("I am the Night", "batman");
-    const textblock2 = new TextBlock("Truth, Justice, and the American Way", "superman");
-    const banner = new Banner("Welcome To My Website!");
-    const textblockWithTitle = new TextBlockWithTitle("Hello World", "This is my confession");
-    const slideshow = new Slideshow("../resources/image1.jpg", "presentation");
-    const banner2 = new Banner("Footer!");
-    const orderedList = new OrderedList(["Dogs", "Cats", "Birds"]);
-    const navbar2 = new Navbar(["Top", "Right", "Left", "Bottom"]);
-    const textblockAlpha = new TextBlock("I am the left side");
-    const textblockBeta = new TextBlock("I am the right side");
-    const columns2 = new Columns2(textblockAlpha, textblock2);
-    const unorderedList = new UnorderedList(["wolf", "bear", "fox"]);
-    const bannerWithImage = new BannerWithImage("About Me!", "../resources/image2.jpg"); 
+    // initialize components
+    const form = new Form();
 
+
+    // add components you want to render to components array
     const components = [
-        banner,
-        navbar,
-        textblock,
-        textblockWithTitle,
-        slideshow,
-        orderedList,
-        banner2,
-        navbar2,
-        columns2,
-        unorderedList,
-        bannerWithImage
+        form
     ];
 
-    // attach components
+
+    // this function renders components into the root element
     attachComponentsToHTML(root, components);
 
 })();
