@@ -8,13 +8,14 @@
 
 
     // initialize components
-    const firstName = new formTextInput("First Name");
-    const form = new Form([firstName]);
+    const banner = new Banner("Hello");
+    const bannerWithImage = new BannerWithImage("Test", "../resources/image2.jpg");
 
 
     // add components you want to render to components array
     const components = [
-        form
+        banner,
+        bannerWithImage
     ];
 
 
