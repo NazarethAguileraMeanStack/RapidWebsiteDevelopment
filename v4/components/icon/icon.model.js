@@ -1,29 +1,27 @@
 class Icon extends DocumentObjectNode {
     constructor(img, text = null, id = null) {
         super();
+        const componentName = "icon";
         this.img = img;
         this.text = text;
-        this.loadCSSandScriptTags("icon");
-        return {node: this.createNode(id)};
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)};
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        const img = document.createElement("IMG");
-        
-        img.src = this.img;
-        div.appendChild(img);
+    createTemplate() {
         
         if (this.text) {
-            const p = document.createElement("P");
-            p.innerText = this.text;
-            div.appendChild(p);
+            return `
+            <img src=${this.img}>
+            <p>${this.text}</p>
+            `;
+        } else {
+            return `
+            <img src=${this.img}>
+            `;
         }
         
-        
-        if (id) div.id = id;
-        div.classList.add("icon-container");
-        return div;
     }
 
 }

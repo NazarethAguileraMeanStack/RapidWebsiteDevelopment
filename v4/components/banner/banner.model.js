@@ -1,18 +1,17 @@
 class Banner extends DocumentObjectNode {
-    constructor(title) {
+    constructor(title, id = null) {
         super();
+        const componentName = "banner";
         this.title = title;
-        this.loadCSSandScriptTags("banner");
-        return {node: this.createNode()};
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)};
     }
 
-    
-    createNode() {
-        const div = document.createElement("DIV");
-        const h1 = document.createElement("H1");
-        h1.innerText = this.title;
-        div.appendChild(h1);
-        div.classList.add("banner-container");
-        return div;
+
+    createTemplate() {
+        return `
+        <h1>${this.title}</h1>
+        `;
     }
 }

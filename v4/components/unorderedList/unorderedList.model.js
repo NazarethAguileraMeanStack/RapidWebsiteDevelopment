@@ -1,25 +1,24 @@
 class UnorderedList extends DocumentObjectNode {
     constructor(items, id = null) {
         super();
+        const componentName = "unorderedList";
         this.items = items;
-        this.loadCSSandScriptTags("unorderedList");
-        return {node: this.createNode(id)}
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)}
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        const ul = document.createElement("UL");
+    createTemplate() {
+        let list = "";
 
         for (let i = 0; i < this.items.length; i++) {
-            const li = document.createElement("LI");
-            li.innerHTML = `<p>${this.items[i]}</p>`;
-            ul.appendChild(li);
+            list += `<li><p>${this.items[i]}</p></li>`;
         }
-
-        div.appendChild(ul);
-
-        div.classList.add("unorderedList-container");
-        if (id) div.id = id;
-        return div;
+        
+        return `
+        <ul>
+        ${list}
+        </ul>
+        `;
     }
 }

@@ -1,32 +1,25 @@
 class Navbar extends DocumentObjectNode {
     constructor(pages, id = null) {
         super();
+        const componentName = "navbar";
         this.pages = pages;
-        this.loadCSSandScriptTags("navbar");
-        return {node: this.createNode(id)}
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)}
     }
 
-    createNode(id) {
-        const nav = document.createElement("NAV");
-        const ul = document.createElement("UL");
-
+    createTemplate() {
+        let list = "";
         for (let i = 0; i < this.pages.length; i++) {
-            const li = document.createElement("LI");
-            const a = document.createElement("A");
-            a.innerText =  `${this.pages[i]}`;
-            a.href = "./" + `${this.pages[i]}.html`;
-            li.appendChild(a);
-            ul.appendChild(li);
+            list += `<li><a href="./${this.pages[i]}.html">${this.pages[i]}</a></li>`;
         }
 
-        nav.appendChild(ul);
-        nav.classList.add("navbar-container");
-
-        if (id) {
-            nav.id = id;
-        }
-
-        return nav;
+        return `
+        <nav>
+            <ul>
+            ${list}
+            </ul>
+        </nav>`;
     }
 
 

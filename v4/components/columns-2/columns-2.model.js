@@ -1,20 +1,22 @@
 class Columns2 extends DocumentObjectNode {
     constructor(element1, element2, id = null) {
         super();
+        const componentName = "columns-2";
         this.element1 = element1.node;
         this.element2 = element2.node;
-        this.loadCSSandScriptTags("columns-2");
-        return {node: this.createNode(id) }
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template) }
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
+    createTemplate() {
+        console.log(this.element1);
+        console.log(this.element2);
         this.element1.classList.add("columns-2-container-column-1");
         this.element2.classList.add("columns-2-container-column-2");
-        div.appendChild(this.element1);
-        div.appendChild(this.element2);
-        div.classList.add("columns-2-container");
-        if (id) div.id = id;
-        return div;
+        return `
+        ${this.element1.outerHTML}
+        ${this.element2.outerHTML}
+        `;
     }
 }

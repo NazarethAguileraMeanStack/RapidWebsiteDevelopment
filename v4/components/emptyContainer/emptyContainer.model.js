@@ -1,22 +1,21 @@
 class EmptyContainer extends DocumentObjectNode {
     constructor(elements, id = null) {
         super();
+        const componentName = "emptyContainer";
         this.elements = elements;
-        this.loadCSSandScriptTags("emptyContainer");
-        return {node: this.createNode(id)}
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)}
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        div.classList.add("emptyContainer-container");
+    createTemplate() {
+        let html = "";
 
         for (let i = 0; i < this.elements.length; i++) {
-            div.appendChild(this.elements[i].node);
+            html += this.elements[i].node.outerHTML;
         }
 
-
-        if (id) div.id = id;
-        return div;
+        return html;
         
     }
 }

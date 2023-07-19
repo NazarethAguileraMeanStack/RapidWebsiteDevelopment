@@ -1,21 +1,17 @@
 class Slideshow extends DocumentObjectNode {
     constructor(defaultImage, id = null) {
         super();
+        const componentName = "slideshow";
         this.defaultImage = defaultImage;
-        this.loadCSSandScriptTags("slideshow");
-        return {node: this.createNode(id) };
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template) };
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        const img = document.createElement("IMG");
-        img.id = "slideshow-image";
-        img.src = this.defaultImage;
-        div.appendChild(img);
-        div.classList.add("slideshow-container");
-        
-        if (id) div.id = id;
-        return div;
+    createTemplate() {
+        return `
+        <img id="slideshow-image">
+        `;
     }
 
     

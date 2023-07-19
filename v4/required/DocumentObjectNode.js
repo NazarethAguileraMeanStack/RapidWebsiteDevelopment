@@ -57,9 +57,15 @@ class DocumentObjectNode {
         body.appendChild(script);
     }
 
-    createNode() {
-        const p = document.createElement("P");
-        p.innerText = "Empty Node";
-        return p;
+    createNode(id, componentName, template) {
+        const div = document.createElement("DIV");
+        if (id) div.id = id;
+        div.classList.add(`${componentName}-container`);
+        div.innerHTML = template;
+        return div;
+    }
+
+    createTemplate() {
+        console.error("Warning: You are not overriding the default template");
     }
 }

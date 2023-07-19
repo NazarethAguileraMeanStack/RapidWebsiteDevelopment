@@ -1,22 +1,16 @@
 class TextBlock extends DocumentObjectNode {
     constructor(text, id = null) {
         super();
-        this.loadCSSandScriptTags("textblock");
+        const componentName = "textblock";
         this.text = text;
-        return {node: this.createNode(id) }
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template) }
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        const p = document.createElement("P");
-        p.innerText = this.text;
-        div.classList.add("textblock-container");
-        div.appendChild(p);
-
-        if (id) {
-            div.id = id;
-        }
-
-        return div;
+    createTemplate() {        
+        return `
+        <p>${this.text}</p>
+        `;
     }
 }

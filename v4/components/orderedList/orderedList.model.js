@@ -1,25 +1,24 @@
 class OrderedList extends DocumentObjectNode {
     constructor(items, id = null) {
         super();
+        const componentName = "orderedList";
         this.items = items;
-        this.loadCSSandScriptTags("orderedList");
-        return {node: this.createNode(id)}
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)}
     }
 
-    createNode(id) {
-        const div = document.createElement("DIV");
-        const ol = document.createElement("OL");
+    createTemplate() {
+        let list = "";
 
         for (let i = 0; i < this.items.length; i++) {
-            const li = document.createElement("LI");
-            li.innerHTML = `<p>${this.items[i]}</p>`;
-            ol.appendChild(li);
+            list += `<li><p>${this.items[i]}</p></li>`;
         }
 
-        div.appendChild(ol);
-
-        div.classList.add("orderedList-container");
-        if (id) div.id = id;
-        return div;
+        return `
+        <ol>
+        ${list}
+        </ol>
+        `;
     }
 }

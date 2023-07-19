@@ -1,31 +1,28 @@
 class Form extends DocumentObjectNode {
     constructor(formControls, action = "", method = "", id = null) {
         super();
+        const componentName = "form";
         this.formControls = formControls || [];
         this.action = action;
         this.method = method;
-        this.loadCSSandScriptTags("form");
-        return {node: this.createNode(id)}
+        this.loadCSSandScriptTags(componentName);
+        this.template = this.createTemplate();
+        return {node: this.createNode(id, componentName, this.template)}
     }
 
-    createNode(id) {
-        const form = document.createElement("FORM");
-        const submit = document.createElement("INPUT");
-        submit.type = "submit";
-        submit.value = "submit";
-
-        form.action = this.action;
-        form.method = this.method;
+    createTemplate() {
+        let controls = "";
 
         for (let i = 0; i < this.formControls.length; i++) {
-            form.appendChild(this.formControls[i].node);
+            controls += this.formControls[i].node.outerHTML;
         }
 
-        form.appendChild(submit);
-
-        form.classList.add("form-container");
-        if (id) form.id = id;
-        return form;
+        return `
+        <form action=${this.action} method="${this.method}">
+            ${controls}
+            <input type="submit" value="Submit">
+        </form>
+        `;
 
     }
 }
