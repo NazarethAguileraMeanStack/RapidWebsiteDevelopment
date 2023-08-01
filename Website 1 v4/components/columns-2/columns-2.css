@@ -1,0 +1,16 @@
+.columns-2-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+
+.columns-2-container-column-1 {
+    width: 50%;
+    height: 100%;
+}
+
+.columns-2-container-column-2 {
+    width: 50%;
+    height: 100%;
+}

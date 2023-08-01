@@ -1,0 +1,21 @@
+.columns-3-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+
+.columns-3-container-column-1 {
+    width: 33.3%;
+    height: 100%;
+}
+
+.columns-3-container-column-2 {
+    width: 33.4%;
+    height: 100%;
+}
+
+.columns-3-container-column-3 {
+    width: 33.3%;
+    height: 100%;
+}
